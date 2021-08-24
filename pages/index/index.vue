@@ -5,8 +5,11 @@
 			v-show="isShowTabControl"></tab-control>
 		<!-- 滚动区域 -->
 
-		<scroll-view class="index-scroll" :scroll-top="scrollTop" scroll-y=true @scrolltolower="lowerLoadData"
-			lower-threshold=50 @scroll="scroll" scroll-with-animation=true>
+		<scroll-view class="index-scroll" :scroll-top="scrollTop" 
+		  scroll-y=true
+			lower-threshold=50 @scroll="scroll" scroll-with-animation=true
+			@scrolltolower="lowerLoadData">
+			
 			<!-- 头部轮播 -->
 			<index-swiper class="index-swiper" :banners="banners" />
 			<!-- 优惠信息 -->
@@ -27,6 +30,8 @@
 </template>
 
 <script>
+	// 引入mescroll-mixins.js
+	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
 	//头部轮播组件
 	import IndexSwiper from './childComps/IndexSwiper.vue'
 	//优惠信息组件
@@ -70,7 +75,8 @@
 				isShowTabControl: false,
 				isShowBackTop: false,
 				tabControlTop:0,
-				isLowerLoad:false
+				isLowerLoad:false,
+				 triggered: false
 				
 
 			}
@@ -80,8 +86,8 @@
 			this.getGoods('pop')
 			this.getGoods('sell')
 			this.getGoods('new')
-
 		},
+		
 		computed: {
 			goods() {
 				return this.goodsList[this.type].list
@@ -93,7 +99,8 @@
 			PopularInfo,
 			TabControl,
 			GoodsList,
-			BackTop
+			BackTop,
+			
 		},
 		
 		methods: {
@@ -144,6 +151,7 @@
 
 			//滚动到底部加载下一页数据
 			lowerLoadData() {
+				
 				//防止多次触发
 				if(this.isLowerLoad){
 					this.getGoods(this.type)
@@ -180,7 +188,7 @@
 					this.scrollTop = 0
 				});
 			}
-
+			 
 
 
 

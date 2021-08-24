@@ -33,7 +33,7 @@
 		}, {
 			"path": "pages/profile/profile",
 			"style": {
-				"navigationBarTitleText": "地图",
+				"navigationBarTitleText": "个人中心",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#ff8198",
 				"enablePullDownRefresh": false
@@ -62,7 +62,10 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
 	},
 	"tabBar": {
 
@@ -95,7 +98,7 @@
 				"pagePath": "pages/profile/profile",
 				"iconPath": "static/img/tabbar/profile.png",
 				"selectedIconPath": "static/img/tabbar/profile_active.png",
-				"text": "地图"
+				"text": "个人中心"
 
 			}
 		]

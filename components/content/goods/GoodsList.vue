@@ -21,6 +21,7 @@
 		components:{
 			GoodsListItem
 		}
+		
 	}
 </script>
 

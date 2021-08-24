@@ -220,7 +220,7 @@
 			async getRecommend() {
 				await getRecommend().then(res => {
 					this.recommend = res.data.list
-
+					console.log(this.recommend);
 				}).catch(err => {
 					console.log(err);
 				})

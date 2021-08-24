@@ -1,12 +1,11 @@
 <template>
-	<view class="category-sub-item">
-		<image :src="categorySubItem.image"></image>
+	<view class="category-sub-item" @click="goToNewPage(categorySubItem.link)">
+		<image :src="categorySubItem.image" ></image>
 		<view>{{categorySubItem.title}}</view>
 	</view>
 </template>
 
 <script>
-
 	export default{
 		name:'CategorySubItem',
 		props:{
@@ -15,6 +14,16 @@
 				default(){
 					return{}
 				}
+			}
+		},
+		methods:{
+			goToNewPage(url){
+				url =url.substr(0,url.indexOf("&"))
+				url = encodeURIComponent(url)
+						
+				uni.navigateTo({
+					url: "/components/content/webPage/webPage?url="+url,
+				})
 			}
 		}
 	}

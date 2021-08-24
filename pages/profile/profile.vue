@@ -111,20 +111,52 @@
 
 <template>
     <view class="content">
-       
-        <mi-map 
+       <!-- <button @click="fenXiang">分享</button>
+	   <button @click="saoMa">扫一扫</button>
+	   <button @click="login">一键登陆</button> -->
+	   
+	   
+	    <!-- 用户信息 -->
+	       <user-info/>
+	   
+	       <!-- 余额积分优惠券 -->
+	       <section class="section">
+	         <view>
+	           <text>0.00</text>元
+	           <view>我的余额</view>
+	         </view>
+	         <view>
+	           <text>0</text>个
+	           <view>优惠券</view>
+	         </view>
+	         <view>
+	           <text>0</text>个
+	           <view>积分</view>
+	         </view>
+	       </section>
+	   
+	       <!-- 消息 -->
+	       <list-view/>
+       <!-- <mi-map 
            
             ref="miMap"
             tipText="mi-Map"
             @updateAddress="updateAddress"
         >
-        </mi-map>
+        </mi-map> -->
     </view>
 </template>
 <script>
     import miMap from '../../components/mi-map/mi-map.vue'
+	
+	
+	
+	//用户信息
+	import UserInfo from "./childComps/UserInfo.vue";
+	//消息组件
+	import ListView from "./childComps/ListView.vue";
     export default {
-        components: {miMap},
+        components: {miMap,ListView,UserInfo},
         data() {
             return {
               
@@ -138,12 +170,54 @@
                 
                 this.positionObj = addressObj
             },
+			fenXiang(){
+				uni.share({
+				    provider: "weixin",
+				    scene: "WXSceneSession",
+				    type: 0,
+				    href: "http://uniapp.dcloud.io/",
+				    title: "uni-app分享",
+				    summary: "我正在使用HBuilderX开发uni-app！",
+				    imageUrl: "../static/img/background.png",
+				    success: function (res) {
+				        console.log("success:" + JSON.stringify(res));
+				    },
+				    fail: function (err) {
+				        console.log("fail:" + JSON.stringify(err));
+				    }
+				});
+			},
+			saoMa(){
+				// 只允许通过相机扫码
+				uni.scanCode({
+				    onlyFromCamera: true,
+				    success: function (res) {
+				        console.log('条码类型：' + res.scanType);
+				        console.log('条码内容：' + res.result);
+				    }
+				});
+			},
+			login(){
+				uni.login({
+				  provider: 'weixin',
+				  success: function (loginRes) {
+				    console.log(loginRes.authResult);
+				    // 获取用户信息
+				    uni.getUserInfo({
+				      provider: 'weixin',
+				      success: function (infoRes) {
+				        console.log('用户昵称为：' + infoRes.userInfo.nickName);
+				      }
+				    });
+				  }
+				});
+			}
         }
     }
 </script>
 
 <style>
-    .content {
+   /* .content {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -152,5 +226,32 @@
 
     .address{
         margin-top: 1rem;
-    }
+    } */
+	
+	.profile{
+	
+	}
+	.profile-nav-bar{
+	  background-color: var(--color-tint);
+	  color: #fff;
+	}
+	.section{
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-around;
+	  padding: 40rpx 0;
+	  border-bottom: 5px solid rgba(168,167,166,0.1);
+	  font-size: 24rpx;
+	}
+	.section > view{
+	  flex: 1;
+	  text-align: center;
+	}
+	.section view text{
+	  font-size: 40rpx;
+	  color: #ff8198;
+	}
+	.section view view{
+	  margin-top: 18rpx;
+	}
 </style>

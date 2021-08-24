@@ -49,7 +49,7 @@
 			getCategory() {
 				getCategory().then(res => {
 					this.categoryMenu = res.data.category.list
-					console.log(this.categoryMenu);
+					
 				}).catch(err => {
 					console.log(err);
 				})
@@ -58,7 +58,7 @@
 			getCategorySub(maitKey) {
 				getCategorySub(maitKey).then(res => {
 					this.categorySub = res.data.list
-					console.log(this.categorySub);
+				
 				}).catch(err => {
 					console.log(err);
 				})

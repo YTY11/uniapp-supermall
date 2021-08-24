@@ -35,7 +35,8 @@
 		},
 		methods:{
 			...mapGetters(['cartList']),
-		}
+		},
+	
 		
 	}
 </script>

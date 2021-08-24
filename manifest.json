@@ -10,9 +10,9 @@
         "usingComponents" : true,
         "nvueStyleCompiler" : "uni-app",
         "compilerVersion" : 3,
-		"compatible":{
-			"ignoreVersion":true
-		},
+        "compatible" : {
+            "ignoreVersion" : true
+        },
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : false,
@@ -21,7 +21,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Maps" : {}
+            "Maps" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -58,6 +59,16 @@
                     "amap" : {
                         "appkey_ios" : "b6783801c2550316186a3a5b2c4881dc",
                         "appkey_android" : "b6783801c2550316186a3a5b2c4881dc"
+                    }
+                },
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "",
+                        "appsecret" : "",
+                        "UniversalLinks" : ""
+                    },
+                    "qq" : {
+                        "appid" : ""
                     }
                 }
             },

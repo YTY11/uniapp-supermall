@@ -8,13 +8,11 @@
   <u-button type="warning" @click="login" v-if="user.avatarUrl==''">一键登陆</u-button>
   <view class="login" v-if="user.name!=''">
     <slot name="login-or-register">
-		
      <text>{{user.name}}</text>
     </slot>
 
     <view class="phone">
-      <text>{{user.country}} {{user.province}} {{user.city}}</text>
-     
+      <text>{{user.country}} {{user.province}} {{user.city}}</text>     
     </view>
 
   </view>

@@ -206,6 +206,7 @@
 				    uni.getUserInfo({
 				      provider: 'weixin',
 				      success: function (infoRes) {
+						   
 				        console.log('用户昵称为：' + infoRes.userInfo.nickName);
 				      }
 				    });

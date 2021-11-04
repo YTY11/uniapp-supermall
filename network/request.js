@@ -6,7 +6,7 @@ const TIME_OUT = 5000 //超时时间
 export function getHomeMultidata(){
 	return new Promise((resole,reject)=>{
 		uni.request({
-			url:BASE_URL+'/api/m5/home/multidata',
+			url:BASE_URL+'/api/hy66/home/multidata',
 			timeout:TIME_OUT,
 			success: (res) => {
 				resole(res.data)
@@ -22,7 +22,7 @@ export function getHomeMultidata(){
 export function getGoods(type,page){
   return new Promise((resolve,reject)=>{
 	  uni.request({
-	  	url:BASE_URL + '/api/m5/home/data',
+	  	url:BASE_URL + '/api/hy66/home/data',
 		thimeout:TIME_OUT,
 		data:{
 			type,
@@ -45,7 +45,7 @@ export function getGoods(type,page){
 export function getDetail(iid){
 	return new Promise((resolve,reject)=>{
 		uni.request({
-			url: BASE_URL+'/api/m5/detail',
+			url: BASE_URL+'/api/hy66/detail',
 			timeout:TIME_OUT,
 			data:{
 				iid
@@ -63,7 +63,7 @@ export function getDetail(iid){
 export function getRecommend(){
   return new Promise((resolve,reject)=>{
 	  uni.request({
-	  	url:BASE_URL + '/api/m5/recommend',
+	  	url:BASE_URL + '/api/hy66/recommend',
 		timeout:TIME_OUT,
 		success:(res)=>{
 			resolve(res.data)
@@ -119,7 +119,7 @@ export class GoodsParams{
 export function getCategory() {
 	return new Promise((resolve,reject)=>{
 		uni.request({
-			url:BASE_URL + '/api/m5/category',
+			url:BASE_URL + '/api/hy66/category',
 			timeout:TIME_OUT,
 			success: (res) => {
 				resolve(res.data)
@@ -135,7 +135,7 @@ export function getCategory() {
 export function getCategorySub(maitKey) {
 	return new Promise((resolve,reject)=>{
 		uni.request({
-			url:BASE_URL + '/api/m5/subcategory',
+			url:BASE_URL + '/api/hy66/subcategory',
 			timeout:TIME_OUT,
 			data:{
 				maitKey
